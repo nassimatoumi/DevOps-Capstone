@@ -47,8 +47,8 @@ jobs:
           command: |
             docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
             docker build --tag=app .
-            docker tag app nasstoumi/capstone-devops-udacity
-            docker push nasstoumi/capstone-devops-udacity
+            docker tag app nasstoumi/udacity-capstone
+            docker push nasstoumi/udacity-capstone
 
   create-deployment:
     executor: aws-eks/python3
@@ -59,13 +59,14 @@ jobs:
         type: string
     steps:
       - checkout
+      - kubernetes/install
       - aws-eks/update-kubeconfig-with-authenticator:
           cluster-name: << parameters.cluster-name >>
           install-kubectl: true
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
           resource-file-path: deployment.yml
-          resource-name: deployment/capstone-devops-udacity
+          resource-name: deployment/udacity-capstone
 
 workflows:
   deployment:
@@ -75,9 +76,9 @@ workflows:
           requires:
             - lint
       - aws-eks/create-cluster:
-          cluster-name: capstone-devops-udacity
+          cluster-name: udacity-capstone
       - create-deployment:
-          cluster-name: capstone-devops-udacity
+          cluster-name: udacity-capstoney
           requires:
             - aws-eks/create-cluster
 

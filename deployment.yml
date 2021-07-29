@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: capstone-devops-udacity
+  name: udacity-capstone
   labels:
-        app: capstone-devops-udacity
+        app: udacity-capstone
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: capstone-devops-udacity
+      app: udacity-capstone
   template:
     metadata:
       labels:
-        app: capstone-devops-udacity
+        app: udacity-capstone
     spec:
       containers:
-      - name: capstone-devops-udacity
-        image: nasstoumi/capstone-devops-udacity
+      - name: udacity-capstone
+        image: nasstoumi/udacity-capstone
         ports:
         - containerPort: 80
   strategy:
@@ -32,11 +32,11 @@ kind: Service
 metadata:
   name: capstone-expose
   labels:
-    app: capstone-devops-udacity
+    app: udacity-capstone
 spec:
   type: LoadBalancer
   selector:
-    app: capstone-devops-udacity
+    app: udacity-capstone
   ports:
     - protocol: TCP
       port: 80
