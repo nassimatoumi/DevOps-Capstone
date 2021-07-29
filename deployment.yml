@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: udacity-capstone-cicd
+  name: capstone-cicd
   labels:
-        app: udacity-capstone-cicd
+        app: capstone-cicd
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: udacity-capstone-cicd
+      app: capstone-cicd
   template:
     metadata:
       labels:
-        app: udacity-capstone-cicd
+        app: capstone-cicd
     spec:
       containers:
-      - name: udacity-capstone-cicd
-        image: nasstoumi/udacity-capstone-cicd
+      - name: capstone-cicd
+        image: nasstoumi/capstone-cicd
         ports:
         - containerPort: 80
   strategy:
@@ -32,11 +32,11 @@ kind: Service
 metadata:
   name: capstone-expose
   labels:
-    app: udacity-capstone-cicd
+    app: capstone-cicd
 spec:
   type: LoadBalancer
   selector:
-    app: udacity-capstone-cicd
+    app: capstone-cicd
   ports:
     - protocol: TCP
       port: 80
