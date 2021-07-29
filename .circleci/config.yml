@@ -43,12 +43,12 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Build and push docker image
-        command: |
-          docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-          docker build --tag=app .
-          docker tag app nasstoumi/capstone-udacity
-          docker push nasstoumi/capstone-udacity
+          name: Build and push docker image
+          command: |
+            docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+            docker build --tag=app .
+            docker tag app nasstoumi/capstone-udacity
+            docker push nasstoumi/capstone-udacity
 
   create-deployment:
     executor: aws-eks/python3
