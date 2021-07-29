@@ -82,6 +82,4 @@ workflows:
           cluster-name: capstone-udacity
           requires:
             - aws-eks/create-cluster
-      - aws-eks/delete-cluster:
-          cluster-name: capstone-udacity
 
