@@ -78,7 +78,7 @@ workflows:
       - aws-eks/create-cluster:
           cluster-name: udacity-capstone
       - create-deployment:
-          cluster-name: udacity-capstoney
+          cluster-name: udacity-capstone
           requires:
             - aws-eks/create-cluster
 
