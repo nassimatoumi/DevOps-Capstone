@@ -1,4 +1,4 @@
-# uda-capstone
+# Udacity DevOps Capstone Project
 [![CircleCI](https://circleci.com/gh/nassimatoumi/DevOps-Capstone.svg?style=svg)](https://circleci.com/gh/nassimatoumi/DevOps-Capstone)
 
 This project deploys a simple Flask app using CircleCI, EKS, and Docker images.
