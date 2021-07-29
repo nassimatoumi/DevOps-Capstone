@@ -47,8 +47,8 @@ jobs:
           command: |
             docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
             docker build --tag=app .
-            docker tag app nasstoumi/udacity-capstone
-            docker push nasstoumi/udacity-capstone
+            docker tag app nasstoumi/udacity-capstone-cicd
+            docker push nasstoumi/udacity-capstone-cicd
 
   create-deployment:
     executor: aws-eks/python3
@@ -66,7 +66,7 @@ jobs:
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
           resource-file-path: deployment.yml
-          resource-name: deployment/udacity-capstone
+          resource-name: deployment/udacity-capstone-cicd
 
 workflows:
   deployment:
@@ -76,9 +76,9 @@ workflows:
           requires:
             - lint
       - aws-eks/create-cluster:
-          cluster-name: udacity-capstone
+          cluster-name: udacity-capstone-cicd
       - create-deployment:
-          cluster-name: udacity-capstone
+          cluster-name: udacity-capstone-cicd
           requires:
             - aws-eks/create-cluster
 
