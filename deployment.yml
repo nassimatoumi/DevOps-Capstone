@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: capstonecicd
+  name: capstoneudacity
   labels:
-        app: capstonecicd
+        app: capstoneudacity
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: capstonecicd
+      app: capstoneudacity
   template:
     metadata:
       labels:
-        app: capstonecicd
+        app: capstoneudacity
     spec:
       containers:
-      - name: capstonecicd
-        image: nasstoumi/capstonecicd
+      - name: capstoneudacity
+        image: nasstoumi/capstoneudacity
         ports:
         - containerPort: 80
   strategy:
     rollingUpdate:
-      maxSurge: 25%
+      maxSurge: 50%
       maxUnavailable: 25%
     type: RollingUpdate
 
@@ -30,13 +30,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: capstonecicd
+  name: capstoneudacity
   labels:
-    app: capstonecicd
+    app: capstoneudacity
 spec:
   type: LoadBalancer
   selector:
-    app: capstonecicd
+    app: capstoneudacity
   ports:
     - protocol: TCP
       port: 80
