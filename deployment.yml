@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: capstone-cicd
+  name: capstonecicd
   labels:
-        app: capstone-cicd
+        app: capstonecicd
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: capstone-cicd
+      app: capstonecicd
   template:
     metadata:
       labels:
-        app: capstone-cicd
+        app: capstonecicd
     spec:
       containers:
-      - name: capstone-cicd
-        image: nasstoumi/capstone-cicd
+      - name: capstonecicd
+        image: nasstoumi/capstonecicd
         ports:
         - containerPort: 80
   strategy:
@@ -30,13 +30,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: capstone-expose
+  name: capstonecicd
   labels:
-    app: capstone-cicd
+    app: capstonecicd
 spec:
   type: LoadBalancer
   selector:
-    app: capstone-cicd
+    app: capstonecicd
   ports:
     - protocol: TCP
       port: 80
