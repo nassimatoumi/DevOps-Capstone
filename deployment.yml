@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capstone-udacity
+  labels:
+        app: capstone-udacity
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: capstone-udacity
+  template:
+    metadata:
+      labels:
+        app: capstone-udacity
+    spec:
+      containers:
+      - name: capstone-udacity
+        image: nasstoumi/capstone-udacity
+        ports:
+        - containerPort: 80
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: capstone-expose
+  labels:
+    app: capstone-udacity
+spec:
+  type: LoadBalancer
+  selector:
+    app: capstone
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
