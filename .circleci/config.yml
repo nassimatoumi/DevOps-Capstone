@@ -75,9 +75,9 @@ workflows:
           requires:
             - lint
       - aws-eks/create-cluster:
-          cluster-name: capstone-udacity
+          cluster-name: capstone-cicd-udacity
       - create-deployment:
-          cluster-name: capstone-udacity
+          cluster-name: capstone-cicd-udacity
           requires:
             - aws-eks/create-cluster
 
