@@ -46,8 +46,8 @@ jobs:
           name: Build and push docker image
           command: |
             docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-            docker build -t nasstoumi/capstone .
-            docker tag app nasstoumi/capstone
+            docker build --tag=capstone .
+            docker tag capstone nasstoumi/capstone
             docker push nasstoumi/capstone
 
   create-deployment:
