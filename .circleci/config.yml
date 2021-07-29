@@ -46,9 +46,9 @@ jobs:
           name: Build and push docker image
           command: |
             docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-            docker build --tag=caps .
-            docker tag caps nasstoumi/caps
-            docker push nasstoumi/caps
+            docker build --tag=cap .
+            docker tag cap nasstoumi/cap
+            docker push nasstoumi/cap
 
   create-deployment:
     executor: aws-eks/python3
@@ -66,7 +66,7 @@ jobs:
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
           resource-file-path: deployment.yml
-          resource-name: deployment/caps
+          resource-name: deployment/cap
 
 workflows:
   deployment:
@@ -76,9 +76,9 @@ workflows:
           requires:
             - lint
       - aws-eks/create-cluster:
-          cluster-name: caps
+          cluster-name: cap
       - create-deployment:
-          cluster-name: caps
+          cluster-name: cap
           requires:
             - aws-eks/create-cluster
 

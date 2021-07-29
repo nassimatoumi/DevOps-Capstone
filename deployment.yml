@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: caps
+  name: cap
   labels:
-        app: caps
+    app: cap
   namespace: default
 
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: caps
+      app: cap
   strategy:
     rollingUpdate:
       maxSurge: 50%
@@ -19,12 +19,12 @@ spec:
   template:
     metadata:
       labels:
-        app: caps
+        app: cap
     spec:
       containers:
-      - image: nasstoumi/caps
+      - image: nasstoumi/cap
         imagePullPolicy: Always
-        name: caps
+        name: cap
         ports:
           - containerPort: 80
   
@@ -34,13 +34,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: caps
+  name: cap
   labels:
-    app: caps
+    app: cap
 spec:
   type: LoadBalancer
   selector:
-    app: caps
+    app: cap
   ports:
     - protocol: TCP
       port: 80
